@@ -1,11 +1,14 @@
 package com.knowledgespike.scores.service
 
-import com.knowledgespike.scores.repository.IScoresRepository
+import com.knowledgespike.scores.repository.UsersRepository
 
-interface IScoresService {
-
+interface IUsersService {
+    suspend fun test()
 }
 
-class ScoresService(val scoresRepository: IScoresRepository) : IScoresService {
+class UsersService(private val usersRepository: UsersRepository) : IUsersService {
 
+    override  suspend fun test() {
+        usersRepository.get()
+    }
 }

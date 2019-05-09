@@ -4,15 +4,17 @@ val spek_version: String by project
 val jackson_version: String by project
 val kluent_version: String by project
 
-
 buildscript {
+    val kotlin_version: String by project
+    val spring_boot_version: String by project
     repositories {
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}")
     }
 }
 
@@ -57,6 +59,12 @@ subprojects {
 }
 
 
+project(":scores-migrations") {
+    dependencies {
+    }
+}
+
+
 project(":scores-repository") {
     dependencies {
     }
@@ -68,7 +76,10 @@ project(":scores-service") {
     }
 }
 
-
+project(":scores-web") {
+    dependencies {
+    }
+}
 
 project(":scores-restapi") {
     dependencies {
